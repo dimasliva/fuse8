@@ -76,7 +76,8 @@ export default defineComponent ({
       async onSort(sortBy: keyof typeof this.event_sort) {
         try {
             let sort = this.event_sort[sortBy] === false ? 'desc' : 'asc'
-            const res = await axios.get(`${window.location.href}/events?_sort=${sortBy}&_order=${sort}`);
+            let url = window.location.protocol + '//' + window.location.hostname + ':3001/'
+            const res = await axios.get(`${url}/events?_sort=${sortBy}&_order=${sort}`);
             this.event_sort[sortBy] = !this.event_sort[sortBy] 
             this.events = res.data
             console.log('this.events', this.events)
@@ -99,7 +100,8 @@ export default defineComponent ({
         },
         async changeStatus(val: Events) {
           try {
-            const res = await axios.patch(`${window.location.href}/events/${val.id}`, {
+             let url = window.location.protocol + '//' + window.location.hostname + ':3001/'
+            const res = await axios.patch(`${url}/events/${val.id}`, {
               status: val.status === 'Новый' ? 'Выполнен' : 'Новый'
             });
 
@@ -114,7 +116,8 @@ export default defineComponent ({
         },
         async onDelete() {
           try {
-            const res = await axios.delete(`${window.location.href}/events/${this.event.id}`);
+            let url = window.location.protocol + '//' + window.location.hostname + ':3001/'
+            const res = await axios.delete(`${url}/events/${this.event.id}`);
 
             this.getEvents()
             console.log('this.events', this.events)
@@ -126,7 +129,8 @@ export default defineComponent ({
         },
         async getEvents() {
           try {
-            const res = await axios.get(`${window.location.href}/events`);
+            let url = window.location.protocol + '//' + window.location.hostname + ':3001/'
+            const res = await axios.get(`${url}/events`);
 
             this.events = res.data;
             console.log('this.events', this.events)

@@ -53,9 +53,9 @@ export default defineComponent ({
         }
       },
       async getUser(user: User) {
-        console.log(window.location.href.replace(/auth$/, ''))
+        let url = window.location.protocol + '//' + window.location.hostname + ':3001/'
         try {
-          const res = await axios.get(`${window.location.href.replace(/auth$/, '')}users?user=${user.user}&password=${user.password}`);
+          const res = await axios.get(`${url}users?user=${user.user}&password=${user.password}`);
 
           if(res.data.length === 0) {
             this.setError()
