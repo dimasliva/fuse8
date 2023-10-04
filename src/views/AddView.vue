@@ -44,16 +44,16 @@ export default defineComponent ({
     },
     methods: {
       async getEvents() {
-        const res = await axios.get(`${window.location.href}/events`);
+        const res = await axios.get(`${window.location.href.replace(/add/, '')}/events`);
         res.data
       },
       async addEvent() {
         if(this.event.name.length !== 0 && this.event.address.length !== 0) {
-          await axios.get(`${window.location.href}/events`).then(async val => {
+          await axios.get(`${window.location.href.replace(/add/, '')}/events`).then(async val => {
             console.log('events', val.data)
             const month = new Date().toLocaleString('default', { month: 'long' });
             let date = `${new Date().getDay()} ${month} ${new Date().getFullYear()}`
-            await axios.post(`${window.location.href}/events`, {
+            await axios.post(`${window.location.href.replace(/add/, '')}/events`, {
               id: Number(val.data[val.data.length-1].id) + 1,
               "name": this.event.name,
               "address": this.event.address,
