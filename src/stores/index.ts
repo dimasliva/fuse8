@@ -16,7 +16,7 @@ export const useUserStore = defineStore({
         name: '',
         role: ''
       },
-      url: window.location.protocol + '//' + window.location.hostname + ':3001/'
+      url: 'https://my-json-server.typicode.com/dimasliva/fuse8_json_server/'
     } as UserState),
     actions: {
       setUser(user: User) {
