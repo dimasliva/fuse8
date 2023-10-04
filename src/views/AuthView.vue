@@ -54,7 +54,7 @@ export default defineComponent ({
       },
       async getUser(user: User) {
         try {
-          const res = await axios.get(`${window.location.href}users?user=${user.user}&password=${user.password}`);
+          const res = await axios.get(`${window.location.href}/users?user=${user.user}&password=${user.password}`);
 
           if(res.data.length === 0) {
             this.setError()
