@@ -44,7 +44,7 @@ export default defineComponent ({
     },
     methods: {
       async getEvents() {
-        const res = await axios.get(`${window.location.origin}/events`);
+        const res = await axios.get(`${window.location.href}/events`);
         res.data
       },
       async addEvent() {
