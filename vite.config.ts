@@ -6,6 +6,10 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/fuse8/',
+  root: './',
+  build: {
+      outDir: 'dist',
+  },
   plugins: [
     vue(),
   ],
